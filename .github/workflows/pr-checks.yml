@@ -1,0 +1,42 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - labeled
+      - opened
+      - synchronize
+    paths:
+      - '.github/**'
+      - 'src/**'
+      - 'config/**'
+      - 'pom.xml'
+      - 'Dockerfile'
+      - '!**.md'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.job }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: eg-default
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: 'adopt'
+          overwrite-settings: false
+
+      - name: Maven Build & Tests
+        run: |
+          mvn --batch-mode --no-transfer-progress -U clean verify
