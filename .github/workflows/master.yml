@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-test:
     name: Build Project & Upload Artifacts
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -21,6 +21,7 @@ jobs:
           java-version: 17
           distribution: 'adopt'
           overwrite-settings: false
+          cache: maven
 
       - name: Maven Build & Tests
         run: |
