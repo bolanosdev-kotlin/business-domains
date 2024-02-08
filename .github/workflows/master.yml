@@ -1,0 +1,31 @@
+name: master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    name: Build Project & Upload Artifacts
+    runs-on: ubuntu
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: 'adopt'
+          overwrite-settings: false
+
+      - name: Maven Build & Tests
+        run: |
+          # log the Maven version info
+          mvn -v
+          
+          # build and test the code
+          mvn --batch-mode --no-transfer-progress -U clean package
