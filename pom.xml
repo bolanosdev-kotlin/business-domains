@@ -5,8 +5,8 @@
   <groupId>dev.bolanos</groupId>
   <artifactId>business-domains</artifactId>
   <version>1.0-SNAPSHOT</version>
-
   <name>business-domain-proto</name>
+
   <properties>
     <java.version>17</java.version>
 
@@ -38,6 +38,33 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>bolanosdev</id>
+      <name>bolanosdev</name>
+      <url>https://packagecloud.io/bolanosdev</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <url>https://packagecloud.io/bolanosdev/business-domains</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <url>https://packagecloud.io/bolanosdev/business-domains</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <build>
     <extensions>
