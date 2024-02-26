@@ -42,11 +42,11 @@
   <distributionManagement>
     <snapshotRepository>
       <id>artifact-registry</id>
-      <url>artifactregistry://us-west2-maven.pkg.dev/garrison-298703/bolanos-dev-snapshot</url>
+      <url>artifactregistry://us-west2-maven.pkg.dev/garrison-298703/bolanos-dev-mvn-snapshot</url>
     </snapshotRepository>
     <repository>
       <id>artifact-registry</id>
-      <url>artifactregistry://us-west2-maven.pkg.dev/garrison-298703/bolanos-dev-release</url>
+      <url>artifactregistry://us-west2-maven.pkg.dev/garrison-298703/bolanos-dev-mvn-release</url>
     </repository>
   </distributionManagement>
 
